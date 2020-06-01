@@ -100,5 +100,5 @@ class CalendarParser(AbstractParser):
     def parse(self):
         td_content = self.content.xpath(CalendarParser.xpath)
         array = self._htmlparse(td_content)
-        print(array)
+
         return self._todict(array)
