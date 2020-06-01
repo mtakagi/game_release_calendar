@@ -7,7 +7,7 @@ with open('LICENSE') as f:
 
 setup(
     name='game_release_calendar',
-    version='1.0',
+    version='1.0.1',
     description='とあるサイトからゲームの発売日を取得してパースする(自分用)',
     author='mtakagi',
     author_email='mtakagi127@live.jp',

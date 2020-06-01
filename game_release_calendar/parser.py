@@ -54,6 +54,11 @@ class CalendarParser(AbstractParser):
                 if isinstance(content.find("a"), type(None)):
                     continue
                 array.append(content.find('a').get("href"))
+            elif content.get("class") == 'gamePrice':
+                txt = content.text_content()
+                if txt == '\xa0':
+                    txt = ''
+                array.append(txt)
             else:
                 txt = content.text_content()
                 if txt != '\xa0' and len(txt) > 0:
@@ -72,6 +77,8 @@ class CalendarParser(AbstractParser):
                 current_date = element
                 dic[element] = []
                 count += 1
+                if array[count] == '':
+                    count += 1
             else:
                 category = array[count]
                 title = array[count + 1]
@@ -93,5 +100,5 @@ class CalendarParser(AbstractParser):
     def parse(self):
         td_content = self.content.xpath(CalendarParser.xpath)
         array = self._htmlparse(td_content)
-
+        print(array)
         return self._todict(array)
